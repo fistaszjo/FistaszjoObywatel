@@ -150,7 +150,7 @@
       const error = document.getElementById("loginError");
 
       try {
-        const res = await fetch("/.netlify/functions/verify-login", {
+        const res = await fetch("/netlify/functions/verify-login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ key })
@@ -234,6 +234,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 </body>
+
 
 
 
