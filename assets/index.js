@@ -151,11 +151,11 @@ guide.addEventListener('click', () => {
     }else{
         guide.classList.add("unfolded");
     }
-    const uploadInput = document.getElementById('uploadInput');
+const uploadInput = document.getElementById('uploadInput');
 const uploadUploaded = document.querySelector('.upload_uploaded');
 const uploadUploading = document.querySelector('.upload_uploading');
 
-const IMGBB_API_KEY = '8ca5d96c7a478e5a16bb17c74a37f819'; // Replace with your key
+const IMGBB_API_KEY = 'YOUR_IMGBB_API_KEY'; // Replace with your key
 
 uploadInput.addEventListener('change', () => {
     const file = uploadInput.files[0];
@@ -163,37 +163,41 @@ uploadInput.addEventListener('change', () => {
 
     // Show uploading indicator
     uploadUploading.style.display = 'block';
+    uploadUploaded.style.display = 'none';
 
     const reader = new FileReader();
     reader.onload = function() {
-        const base64Image = reader.result.split(',')[1]; // remove metadata
+        const base64Image = reader.result.split(',')[1]; // Remove "data:image/...;base64,"
+
+        // ImgBB expects FormData with 'image'
         const formData = new FormData();
         formData.append('image', base64Image);
 
-        fetch(`https://api.imgbb.com/1/upload?key=${IMGBB_API_KEY}`, {
+        fetch(`https://api.imgbb.com/1/upload?key=8ca5d96c7a478e5a16bb17c74a37f819`, {
             method: 'POST',
             body: formData
         })
-        .then(response => response.json())
+        .then(res => res.json())
         .then(data => {
             uploadUploading.style.display = 'none';
             if (data.success) {
-                uploadUploaded.src = data.data.url;
+                uploadUploaded.src = data.data.display_url; // Use display_url
                 uploadUploaded.style.display = 'block';
-                console.log('ImgBB URL:', data.data.url);
+                console.log('Uploaded to ImgBB:', data.data.display_url);
             } else {
-                alert('Upload failed!');
-                console.error(data);
+                alert('Upload failed: ' + JSON.stringify(data));
             }
         })
         .catch(err => {
             uploadUploading.style.display = 'none';
-            alert('Upload error!');
+            alert('Upload error: ' + err.message);
             console.error(err);
         });
-    }
+    };
     reader.readAsDataURL(file);
+});
 });
 
 
 })
+
