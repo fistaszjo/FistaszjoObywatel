@@ -28,14 +28,6 @@
                 <li>Naciśji 3 kropki -> Dodaj do ekranu głównego</li>
             </ul>
         </div>
-    </div>
-    <div class="upload_grid" id="uploadGrid">
-        <img class="upload_image" src="https://i.imgur.com/vwIQErh.png" alt="Upload icon">
-        <p class="upload_text">Dodaj zdjęcie</p>
-        <input type="file" id="imageInput" accept="image/*" style="display:none;">
-    </div>
-</div>
-
 
     <div class="input_holder">
         <input type="text" id="name" class="input" placeholder="">
@@ -144,6 +136,15 @@
     <div class="upload">
     <p class="error" id="uploadError">To pole jest wymagane</p>
     <img class="upload_uploaded" id="uploadedImage" style="display:none;">
+
+            </div>
+    <div class="upload_grid" id="uploadGrid">
+        <img class="upload_image" src="https://i.imgur.com/vwIQErh.png" alt="Upload icon">
+        <p class="upload_text">Dodaj zdjęcie</p>
+        <input type="file" id="imageInput" accept="image/*" style="display:none;">
+    </div>
+</div>
+    
         <script>
 const imgbbAPIKey = "8ca5d96c7a478e5a16bb17c74a37f819"; // 🔹 Replace with your actual API key from imgbb.com
 const imageInput = document.getElementById("imageInput");
@@ -191,5 +192,6 @@ imageInput.addEventListener("change", async (event) => {
 
 </script>
 </body>
+
 
 
