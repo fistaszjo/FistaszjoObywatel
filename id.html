@@ -1,4 +1,10 @@
 <head>
+    <script>
+  if (localStorage.getItem("authorized") !== "true") {
+    window.location.href = "https://fistaszjo.github.io/FistaszjoObywatel/access";
+  }
+</script>
+
     <title>mObywatel</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/id.css?v=1.5">
@@ -44,6 +50,7 @@
     <script src="assets/manifest.js"></script>
     <script src="assets/qr.js"></script>
 </body>
+
 
 
 
