@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Przekierowanie…</title>
+  <script>
+    // Pobranie pełnego adresu strony
+    const full = window.location.href;
+
+    // Wyciągnięcie części po nazwie repozytorium
+    const afterRepo = full.split("/FistaszjoObywatel/")[1];
+
+    // Przekierowanie do index.html z zachowaniem parametrów
+    window.location.replace("/Fistaszjo.github.io/FistaszjoObywatel/index.html#" + afterRepo);
+  </script>
+</head>
+<body>
+  <p>Przekierowuję…</p>
+</body>
+</html>
